@@ -19,7 +19,9 @@
         </Menu>
         <Canvas Height="393.8" Width="614.2">
             <Image Source="/Resources/PassBase.png" Height="393.8" Width="614.2" />
-            <Image Source="{Binding Photo}" Height="316" Width="236" Canvas.Left="24" Canvas.Top="39.4"/>
+            <Button Canvas.Left="24" Canvas.Top="39.4" Command="{Binding GetImageCommand}">
+                <Image Source="{Binding Photo}" Height="316" Width="236" />
+            </Button>
             <TextBox Text="{Binding LastName}" HorizontalAlignment="Left" Width="300" Height="20" FontSize="10pt" Canvas.Left="284" Canvas.Top="62.4" />
             <TextBox Text="{Binding FirstName}" HorizontalAlignment="Left" Width="300" Height="20" Canvas.Left="284" Canvas.Top="96.8" />
             <TextBox Text="{Binding SecondName}" HorizontalAlignment="Left" Width="300" Height="20" Canvas.Left="284" Canvas.Top="131.4" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PassCreatorApp.Commands;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -21,8 +22,9 @@ namespace PassCreatorApp
         public ICommand NewPassCommand { get; }
         public ICommand SaveAsCommand { get; }
         public ICommand HelpСommand { get; }
+        public ICommand GetImageCommand { get; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public ImageSource Photo
         {
@@ -123,6 +125,10 @@ namespace PassCreatorApp
         public PassCreatorViewModel()
         {
             Photo = new BitmapImage(new Uri("/Resources/AvatarTemplate.png", UriKind.Relative));
+            NewPassCommand = new NewCommand();
+            SaveAsCommand = new SaveAsCommand(this);
+            HelpСommand = new HelpCommand();
+            GetImageCommand = new GetImageCommand(this);
             EmployeeNumber = "№";
             PassNumber = "№";
         }
@@ -130,21 +136,6 @@ namespace PassCreatorApp
         private void OnPropertyChanged([CallerMemberName] string property = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
-
-        private void NewPass()
-        {
-
-        }
-
-        private void SaveAs()
-        {
-
-        }
-
-        private void Help()
-        {
-
         }
     }
 }
