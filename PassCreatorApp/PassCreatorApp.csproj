@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <None Remove="Fonts\OpenSans-Regular.ttf" />
     <None Remove="Fonts\OpenSans-SemiBold.ttf" />
   </ItemGroup>
@@ -17,6 +18,21 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\OpenSans-SemiBold.ttf">
+=======
+    <None Remove="Resources\AvatarTemplate.png" />
+    <None Remove="Resources\PassBase.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\AvatarTemplate.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PassBase.png">
+>>>>>>> dev
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
