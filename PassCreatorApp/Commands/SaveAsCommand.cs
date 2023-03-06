@@ -41,6 +41,14 @@ namespace PassCreatorApp.Commands
             graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
             graphics.DrawImage(passBase, 0, 0);
             graphics.DrawImage(resizedPhoto, 120, 197);
+            var textFont = new Font("Open Sans", 10);
+            var drawBrush = new SolidBrush(System.Drawing.Color.Black);
+            graphics.DrawString(_vm.LastName, textFont, drawBrush, 1420, 312);
+            graphics.DrawString(_vm.FirstName, textFont, drawBrush, 1420, 484);
+            graphics.DrawString(_vm.SecondName, textFont, drawBrush, 1420, 657);
+            graphics.DrawString(_vm.Post, textFont, drawBrush, 1420, 966);
+            graphics.DrawString(_vm.EmployeeNumber, textFont, drawBrush, 1840, 1478);
+            graphics.DrawString(_vm.PassNumber, textFont, drawBrush, 1840, 1603);
             ResultBitmap.Save("img.png");
         }
     }
