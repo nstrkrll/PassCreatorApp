@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:PassCreatorApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="OpenSansBold">pack://application:,,,/Fonts/#OpenSans-SemiBold</FontFamily>
+        <FontFamily x:Key="OpenSansRegular">pack://application:,,,/Fonts/#OpenSans-Regular</FontFamily>
     </Application.Resources>
 </Application>
