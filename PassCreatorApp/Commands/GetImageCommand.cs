@@ -1,7 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.IO;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -37,7 +35,6 @@ namespace PassCreatorApp.Commands
             if (fileDialog.ShowDialog() == true)
             {
                 _vm.Photo = new BitmapImage(new Uri(fileDialog.FileName));
-                //MessageBox.Show(@"..\..\..\Resources\PassBase.png");
             }
         }
     }

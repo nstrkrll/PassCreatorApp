@@ -8,26 +8,26 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         Title="Создатель пропуска" 
-        Height="465" Width="640">
+        Height="475" Width="640">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
     <StackPanel>
-        <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="Файл">
-                <MenuItem Header="Создать..." Command="{Binding NewPassCommand}" />
-                <MenuItem Header="Сохранить..." Command="{Binding SaveAsCommand}" />
-            </MenuItem>
-            <MenuItem Header="Справка" Command="{Binding HelpСommand}" />
-        </Menu>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Создать..." FontSize="15" FontFamily="{StaticResource OpenSansBold}" Height="25" Width="100" Margin="10,5,10,5" Command="{Binding NewPassCommand}" />
+            <Button Content="Сохранить..." FontSize="15" FontFamily="{StaticResource OpenSansBold}" Height="25" Width="100" Margin="10,5,10,5" Command="{Binding SaveAsCommand}" />
+        </StackPanel>
         <Canvas Height="393.8" Width="614.2">
             <Image Source="/Resources/PassBase.png" Height="393.8" Width="614.2" />
             <Button Canvas.Left="24" Canvas.Top="39.4" Command="{Binding GetImageCommand}">
                 <Image Source="{Binding Photo}" Height="316" Width="236" />
             </Button>
-            <TextBox Text="{Binding LastName}" HorizontalAlignment="Left" Width="300" Height="20" FontSize="10pt" Canvas.Left="284" Canvas.Top="62.4" />
-            <TextBox Text="{Binding FirstName}" HorizontalAlignment="Left" Width="300" Height="20" Canvas.Left="284" Canvas.Top="96.8" />
-            <TextBox Text="{Binding SecondName}" HorizontalAlignment="Left" Width="300" Height="20" Canvas.Left="284" Canvas.Top="131.4" />
-            <TextBox Text="{Binding Post}" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Left" Width="300" Height="70" Canvas.Left="284" Canvas.Top="193.2" />
-            <TextBox Text="{Binding EmployeeNumber}" HorizontalAlignment="Left" Width="50" Height="20" Canvas.Left="368" Canvas.Top="295.6" />
-            <TextBox Text="{Binding PassNumber}" HorizontalAlignment="Left" Width="50" Height="20" Canvas.Left="368" Canvas.Top="320.6" />
+            <TextBox Text="{Binding LastName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="300" Height="30" FontSize="30" FontFamily="{StaticResource OpenSansBold}" Canvas.Left="284" Canvas.Top="62.4" TabIndex="1" />
+            <TextBox Text="{Binding FirstName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="300" Height="30" FontSize="30" FontFamily="{StaticResource OpenSansBold}" Canvas.Left="284" Canvas.Top="96.8" TabIndex="2" />
+            <TextBox Text="{Binding SecondName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="300" Height="30" FontSize="30" FontFamily="{StaticResource OpenSansBold}" Canvas.Left="284" Canvas.Top="131.4" TabIndex="3" />
+            <TextBox Text="{Binding Post}" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Left" Width="300" Height="70" FontSize="30" FontFamily="{StaticResource OpenSansBold}" Canvas.Left="284" Canvas.Top="193.2" TabIndex="4" />
+            <TextBox Text="{Binding Path=EmployeeNumber}" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="5" Width="85" Height="23" FontSize="20" FontFamily="{StaticResource OpenSansRegular}" Canvas.Left="368" Canvas.Top="295.6" TabIndex="5" />
+            <TextBox Text="{Binding PassNumber}" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="5" Width="85" Height="23" FontSize="20" FontFamily="{StaticResource OpenSansRegular}" Canvas.Left="368" Canvas.Top="320.6" TabIndex="6" />
         </Canvas>
     </StackPanel>
 </Window>

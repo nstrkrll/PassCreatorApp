@@ -17,13 +17,9 @@ namespace PassCreatorApp
         private string _post;
         private string _employeeNumber;
         private string _passNumber;
-        private string _error;
-        private bool _isError;
         public ICommand NewPassCommand { get; }
         public ICommand SaveAsCommand { get; }
-        public ICommand HelpСommand { get; }
         public ICommand GetImageCommand { get; }
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public ImageSource Photo
@@ -32,7 +28,6 @@ namespace PassCreatorApp
             set
             {
                 _photo = value;
-                IsError = false;
                 OnPropertyChanged();
             }
         }
@@ -43,7 +38,6 @@ namespace PassCreatorApp
             set
             {
                 _firstName = value;
-                IsError = false;
                 OnPropertyChanged();
             }
         }
@@ -54,7 +48,6 @@ namespace PassCreatorApp
             set
             {
                 _secondName = value;
-                IsError = false;
                 OnPropertyChanged();
             }
         }
@@ -65,7 +58,6 @@ namespace PassCreatorApp
             set
             {
                 _lastName = value;
-                IsError = false;
                 OnPropertyChanged();
             }
         }
@@ -76,7 +68,6 @@ namespace PassCreatorApp
             set
             {
                 _post = value;
-                IsError = false;
                 OnPropertyChanged();
             }
         }
@@ -87,7 +78,11 @@ namespace PassCreatorApp
             set
             {
                 _employeeNumber = value;
-                IsError = false;
+                if (_employeeNumber[0] != '№')
+                {
+                    _employeeNumber = string.Concat("№", _employeeNumber.AsSpan(0,4));
+                }
+
                 OnPropertyChanged();
             }
         }
@@ -98,36 +93,20 @@ namespace PassCreatorApp
             set
             {
                 _passNumber = value;
-                IsError = false;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsError
-        {
-            get { return _isError; }
-            set
-            {
-                _isError = value;
-                OnPropertyChanged();
-                if (IsError)
+                if (_passNumber[0] != '№')
                 {
-                    OnPropertyChanged(nameof(DisplayMessage));
+                    _passNumber = string.Concat("№", _passNumber.AsSpan(0, 4));
                 }
-            }
-        }
 
-        public string DisplayMessage
-        {
-            get { return _error; }
+                OnPropertyChanged();
+            }
         }
 
         public PassCreatorViewModel()
         {
             Photo = new BitmapImage(new Uri("/Resources/AvatarTemplate.png", UriKind.Relative));
-            NewPassCommand = new NewCommand();
+            NewPassCommand = new NewCommand(this);
             SaveAsCommand = new SaveAsCommand(this);
-            HelpСommand = new HelpCommand();
             GetImageCommand = new GetImageCommand(this);
             EmployeeNumber = "№";
             PassNumber = "№";
