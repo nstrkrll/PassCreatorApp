@@ -38,7 +38,7 @@ namespace PassCreatorApp.Commands
                     throw new ArgumentException("Необходимо выбрать фотографию работника");
                 }
 
-                var passBase = new Bitmap(Bitmap.FromFile(@"..\..\..\Resources\PassBase.png"));
+                var passBase = new Bitmap(Bitmap.FromFile(@"Resources\PassBase.png"));
                 var ResultBitmap = new Bitmap(passBase.Width, passBase.Height);
                 var photo = new Bitmap(Bitmap.FromFile((_vm.Photo as BitmapImage).UriSource.LocalPath), 1182, 1577);
                 var resizedPhoto = new Bitmap(1182, 1577);
