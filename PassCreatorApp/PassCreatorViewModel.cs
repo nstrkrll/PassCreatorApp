@@ -17,8 +17,10 @@ namespace PassCreatorApp
         private string _post;
         private string _employeeNumber;
         private string _passNumber;
+        private bool _isEmployeeNumberSwitchedOn;
         public ICommand NewPassCommand { get; }
         public ICommand SaveAsCommand { get; }
+        public ICommand ToggleEmployeeNumberCommand { get; }
         public ICommand GetImageCommand { get; }
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -78,9 +80,10 @@ namespace PassCreatorApp
             set
             {
                 _employeeNumber = value;
-                if (_employeeNumber[0] != '№')
+                if (_employeeNumber.Length > 0 && _employeeNumber[0] != '№')
                 {
-                    _employeeNumber = string.Concat("№", _employeeNumber.AsSpan(0,4));
+                    _employeeNumber = _employeeNumber.Replace("№", "");
+                    _employeeNumber = string.Concat("№", _employeeNumber.AsSpan(0));
                 }
 
                 OnPropertyChanged();
@@ -93,12 +96,37 @@ namespace PassCreatorApp
             set
             {
                 _passNumber = value;
-                if (_passNumber[0] != '№')
+                if (_passNumber.Length > 0 && _passNumber[0] != '№')
                 {
-                    _passNumber = string.Concat("№", _passNumber.AsSpan(0, 4));
+                    _passNumber = _passNumber.Replace("№", "");
+                    _passNumber = string.Concat("№", _passNumber.AsSpan(0));
                 }
 
                 OnPropertyChanged();
+            }
+        }
+
+        public string ToggleEmployeeNumberButtonText
+        {
+            get
+            {
+                if (_isEmployeeNumberSwitchedOn)
+                {
+                    return "Отключить табельный номер";
+                }
+
+                return "Включить табельный номер";
+            }
+        }
+
+        public bool IsEmployeeNumberSwitchedOn
+        {
+            get { return _isEmployeeNumberSwitchedOn; }
+            set
+            {
+                _isEmployeeNumberSwitchedOn = value;
+                OnPropertyChanged();
+                OnPropertyChanged(ToggleEmployeeNumberButtonText);
             }
         }
 
@@ -107,9 +135,11 @@ namespace PassCreatorApp
             Photo = new BitmapImage(new Uri("/Resources/AvatarTemplate.png", UriKind.Relative));
             NewPassCommand = new NewCommand(this);
             SaveAsCommand = new SaveAsCommand(this);
+            ToggleEmployeeNumberCommand = new ToggleEmployeeNumberCommand(this);
             GetImageCommand = new GetImageCommand(this);
             EmployeeNumber = "№";
             PassNumber = "№";
+            IsEmployeeNumberSwitchedOn = true;
         }
 
         private void OnPropertyChanged([CallerMemberName] string property = "")

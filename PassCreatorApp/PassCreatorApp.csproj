@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Fonts\OpenSans-Regular.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Fonts\OpenSans-SemiBold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Fonts\OpenSans-Regular.ttf">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\OpenSans-SemiBold.ttf">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <None Remove="Resources\AvatarTemplate.png" />
     <None Remove="Resources\PassBase.png" />
   </ItemGroup>
@@ -30,15 +30,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\AvatarTemplate.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\PassBase.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\PassCreatorApp.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Resources\AvatarTemplate.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PassBase.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PassCreatorApp.ico">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
